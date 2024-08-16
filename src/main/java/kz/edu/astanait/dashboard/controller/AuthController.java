@@ -1,6 +1,7 @@
 package kz.edu.astanait.dashboard.controller;
 
 
+import jakarta.validation.Valid;
 import kz.edu.astanait.dashboard.controller.api.ApiDataResponse;
 import kz.edu.astanait.dashboard.dto.auth.JwtResponse;
 import kz.edu.astanait.dashboard.dto.auth.LoginRequest;
@@ -29,7 +30,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<ApiDataResponse<JwtResponse>> register(@RequestBody RegistrationRequest request) {
+    public ResponseEntity<ApiDataResponse<JwtResponse>> register(@Valid @RequestBody RegistrationRequest request) {
         try {
             return ResponseEntity.ok().body(ApiDataResponse.create(authService.register(request)));
         } catch (Exception e) {

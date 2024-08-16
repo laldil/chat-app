@@ -26,7 +26,7 @@ public class AuthServiceImpl implements AuthService {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider jwtTokenProvider;
 
-    // todo refresh token
+    //todo refresh token
 
     @Override
     public JwtResponse register(RegistrationRequest request) {

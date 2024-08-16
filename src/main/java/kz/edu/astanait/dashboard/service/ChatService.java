@@ -1,7 +1,8 @@
 package kz.edu.astanait.dashboard.service;
 
-import kz.edu.astanait.dashboard.dto.MessageDto;
+import kz.edu.astanait.dashboard.dto.chat.SendMessageRequest;
+import kz.edu.astanait.dashboard.dto.chat.SendMessageResponse;
 
 public interface ChatService {
-    void sendDirectMessage(MessageDto message);
+    SendMessageResponse sendDirectMessage(SendMessageRequest message);
 }
