@@ -41,15 +41,3 @@ jobs:
       - name: Build Docker images
         if: success()
         run: docker build -t chat-app-backend:latest .
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build-and-test
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Build and push docker compose
-        run: |
-          docker-compose up --build -d
