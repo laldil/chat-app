@@ -22,7 +22,7 @@ public class ChatController {
     public void sendDirectMessage(@Valid @RequestBody SendMessageRequest request) {
         var message = chatService.sendDirectMessage(request);
 
-        String destination = "/queue/chat/" + message.getChatId();
+        var destination = "/queue/chat/%s".formatted(message.getChatId());
         messagingTemplate.convertAndSend(destination, message);
     }
 }
