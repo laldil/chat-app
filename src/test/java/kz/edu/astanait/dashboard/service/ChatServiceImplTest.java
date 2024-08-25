@@ -1,6 +1,6 @@
 package kz.edu.astanait.dashboard.service;
 
-import kz.edu.astanait.dashboard.dto.chat.MessageDto;
+import kz.edu.astanait.dashboard.dto.chat.CreateMessageDto;
 import kz.edu.astanait.dashboard.dto.chat.SendMessageRequest;
 import kz.edu.astanait.dashboard.dto.chat.SendMessageResponse;
 import kz.edu.astanait.dashboard.model.ChatEntity;
@@ -52,7 +52,7 @@ public class ChatServiceImplTest {
             mockedSecurityUtils.when(SecurityUtils::getCurrentId).thenReturn(senderId);
 
             when(chatRepository.findDirectChatBetweenUsers(senderId, recipientId)).thenReturn(Optional.of(chat));
-            when(messageService.createMessage(any(MessageDto.class))).thenReturn(message);
+            when(messageService.createMessage(any(CreateMessageDto.class))).thenReturn(message);
 
             // ACT
             var result = chatService.sendDirectMessage(request);
@@ -64,7 +64,7 @@ public class ChatServiceImplTest {
         }
         // VERIFY
         verify(chatRepository).findDirectChatBetweenUsers(senderId, recipientId);
-        verify(messageService).createMessage(any(MessageDto.class));
+        verify(messageService).createMessage(any(CreateMessageDto.class));
     }
 
     private ChatEntity getChatEntity(Long chatId) {

@@ -1,10 +1,13 @@
 package kz.edu.astanait.dashboard.dto.chat;
 
-import kz.edu.astanait.dashboard.model.ChatEntity;
+import lombok.Data;
 
-public record MessageDto(
-        String content,
-        Long recipientId,
-        ChatEntity chat
-) {
+import java.util.Date;
+
+@Data
+public class MessageDto {
+    private Long senderId;
+    private String content;
+    private Date createdDate;
+    private Date modifiedDate;
 }
